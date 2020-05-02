@@ -4,7 +4,7 @@
 <%@ page import="java.math.*" %>
 <%@ page import="java.text.*" %>
 <%@ page import="java.util.*" %>
-
+<%@ page import="java.sql.PreparedStatement" %>
 <%@ include file="/dbconnection.jspf" %>
 
 <script type="text/javascript">
@@ -50,10 +50,20 @@ function decQuantity (prodid) {
 		// Dont need to do anything else
 			
 		// Well, apart from checking to see if they've accessed someone elses basket ;)
-		Statement stmt = conn.createStatement();
+		//Statement stmt = conn.createStatement();
+		
 		try {
+		
+			//Security Fix
+			String sql = "SELECT * FROM Baskets WHERE basketid =?");
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, basketId);
+			ResultSet rs = preparedStatement.executeQuery();
+
+		/*
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
 			rs.next();
+		*/
 			String bUserId = "" + rs.getInt("userid");
 			if ((userid == null && ! bUserId.equals("0")) || (userid != null && userid.equals(bUserId))) {
 				conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'OTHER_BASKET'");
