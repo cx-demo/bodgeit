@@ -1,4 +1,4 @@
-20 AUG 2020.1: Develop - Push Test
+20 AUG 2020.1: Fix1 - Push Test
 
 The BodgeIt Store is a vulnerable web application which is currently aimed at people who are new to pen testing.
 
