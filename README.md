@@ -1,3 +1,5 @@
+20 AUG 2020.1: Master-Push Test
+
 The BodgeIt Store is a vulnerable web application which is currently aimed at people who are new to pen testing.
 
 > ### Please note that The BodgeIt Store is no longer being worked on
